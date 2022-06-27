@@ -7,8 +7,9 @@ If you are somehow reading this right now, this is still a work in progress.
 
 Prepare a file with steam password and two factor code that you will be using. Good luck with 2FA expiry timing :)
 Run:
-> DOCKER_BUILDKIT=1 docker build -t cstrike . --build-arg STEAM_USER=**your_username** --secret id=steam_password,src=**/path/to/your/secret**
-
+> DOCKER_BUILDKIT=1 docker build -t cstrike . --build-arg --secret id=STEAM_CREDENTIALS,src=**/path/to/your/secret**
+STEAM_CREDENTIALS file should look somewhat like this
+> john johnspassword AB123
 
 ## How to run
 
@@ -19,5 +20,8 @@ If you just want to get it going, run the following:
 ## Configuring the server
 
 You should have access to cstrike volume, just do whatever there, changes will be applied in container.
-It's also possible to ignore it and do some basic configurations using environmental variables. 
+If you want to start from scratch, use a new volume.
+It's also possible to ignore it and do some basic configurations using environmental variables. You'll still most likely want to manually adjust some AMX settings, throw in some maps, plugins directly to the volume.
 But that's coming soon
+
+**Remember to backup your server frequently :)**
